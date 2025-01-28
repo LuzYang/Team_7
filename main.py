@@ -1,20 +1,28 @@
-from coin_acceptor import CoinAcceptor
+from Counter import Counter
+
 def main():
-    acceptor=CoinAcceptor(0,0)
-    print("Program starting.")
-    print("Welcome to coin acceptor program.")
-    print("Insert new coin by typing it's value (0 returns the money, -1 exits the program)")
-    print()
+
     while True:
-        value=float(input("Insert coin(0 return, -1 exit):"))
-        if value==0:
-            acceptor.returnCoins()
-        elif value==-1:
-            print("Exiting program.")
+        print("\nOptions:")
+        print("1) Add count")
+        print("2) Get count")
+        print("3) Zero count")
+        print("0) Exit program")
+        choice = input("Choice: ")
+        
+        if choice == '1':
+            Counter.addCount()
+            print("Count increased.")
+        elif choice == '2':
+            print(f"Current count: {Counter.getCount()}")
+        elif choice == '3':
+            Counter.zeroCount()
+            print("Count zeroed.")
+        elif choice == '0':
+            print("Program ending.")
             break
         else:
-            acceptor.insertCoin(value)
-    print()
-    print("Program ending.")
-if __name__=="__main__":
+            print("Invalid choice, try again.")
+
+if __name__ == "__main__":
     main()
