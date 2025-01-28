@@ -34,7 +34,7 @@ def main():
             print(f"Temperature in Kelvin: {converter.toKelvin():.2f} K\n")
 
         elif choice == '0':
-            print("Program ending. Goodbye!")
+            print("Program ending.")
             break
 
         else:
