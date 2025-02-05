@@ -1,44 +1,35 @@
-from temprature_converter import TemperatureConverter
+from entities import Player, NPC, Object
+
+def interact_with_all(entities):
+    for entity in entities:
+        entity.interact()
+        print()
 
 def main():
-    print("Program starting.")
-    print("Initializing temperature converter...")
-    converter = TemperatureConverter()
-    print("Temperature converter initialized.\n")
+    entities = []
 
     while True:
-        print("Options:")
-        print("1) Set temperature (in Celsius)")
-        print("2) Convert to Celsius")
-        print("3) Convert to Fahrenheit")
-        print("4) Convert to Kelvin")
-        print("0) Exit program")
+        print("\n1 - Add Entity")
+        print("2 - Interact with Entities")
+        print("3 - Exit")
+        
         choice = input("Choice: ")
-
-        if choice == '1':
-            try:
-                temp = float(input("Enter temperature in Celsius: "))
-                converter.setTemperature(temp)
-                print(f"Temperature set to {temp}°C.\n")
-            except ValueError:
-                print("Invalid input. Please enter a numeric value.\n")
-
-        elif choice == '2':
-            print(f"Temperature in Celsius: {converter.toCelsius():.2f}°C\n")
-
-        elif choice == '3':
-            print(
-                f"Temperature in Fahrenheit: {converter.toFahrenheit():.2f}°F\n")
-
-        elif choice == '4':
-            print(f"Temperature in Kelvin: {converter.toKelvin():.2f} K\n")
-
-        elif choice == '0':
-            print("Program ending.")
+        
+        if choice == "1":
+            name = input("Name: ")
+            choice = input("Type (1-Player, 2-NPC, 3-Object): ")
+            
+            if choice == "1":
+                entities.append(Player(name, (0, 0, 0), 100))
+            elif choice == "2":
+                entities.append(NPC(name, (0, 0, 0)))
+            elif choice == "3":
+                entities.append(Object(name, (0, 0, 0)))
+                
+        elif choice == "2":
+            interact_with_all(entities)
+        elif choice == "3":
             break
-
-        else:
-            print("Invalid choice. Please try again.\n")
 
 if __name__ == "__main__":
     main()
