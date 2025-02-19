@@ -1,0 +1,18 @@
+Q:Whose code is being evaluated? 
+A:Tawhid Ahamed
+Q:Who/what team evaluated the code?
+A:Team 11
+Q:Is the code well written and structured? Are there any unnecessary or redundant lines of code? Is the code easy to read and understand?
+A:The code is well-structured，The code follows a logical sequence,This makes it easy to read and understand.
+Q:Does the code meet the requirements of the task? Are all features implemented correctly? Are there any bugs or errors in the code? Has the code been tested thoroughly? How is error
+handling implemented?
+A:The code mostly meets the requirements.
+Q:Are there any parts of the code that could be improved for better efficiency? Are there comments explaining the code?
+A:Lacking of Exception Handling,and it has comments
+Q:Does the student clearly understand the code they have written? Can the student explain the purpose and functionality of each part of their code? Does the student show ownership of their work, indicating they have not just copied
+code from external sources?
+A:The code follows a clear logical structure, and the student should be able to articulate the function of each part effectively.
+Q:Has the student customized or adapted any AI- generated code to better fit the task requirements? Can the student explain why they chose to use certain AI generated code
+and how they integrated it into their project?
+A:He used AI—he wrote the foundation himself, then leveraged AI to optimize it, and also learned from the enhancements AI introduced.
+score:95/100
