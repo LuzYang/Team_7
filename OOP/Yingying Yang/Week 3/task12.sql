@@ -1,0 +1,27 @@
+CREATE TABLE Location (
+    LocationID INT IDENTITY(1,1) PRIMARY KEY,
+    LocationName NVARCHAR(255) NOT NULL,
+    Address NVARCHAR(500) NOT NULL
+);
+
+CREATE TABLE IoT_Equipment (
+    EquipmentID INT IDENTITY(1,1) PRIMARY KEY,
+    EquipmentName NVARCHAR(255) NOT NULL,
+    LocationID INT,
+    Model NVARCHAR(255),
+    SerialNumber NVARCHAR(255) UNIQUE,
+    FOREIGN KEY (LocationID) REFERENCES Location(LocationID) ON DELETE SET NULL
+);
+CREATE TABLE Users (
+    UserID INT IDENTITY(1,1) PRIMARY KEY,
+    UserName NVARCHAR(255) NOT NULL,
+    Email NVARCHAR(255) UNIQUE NOT NULL,
+    Role NVARCHAR(100) NOT NULL
+);
+CREATE TABLE Measurements (
+    MeasurementID INT IDENTITY(1,1) PRIMARY KEY,
+    EquipmentID INT,
+    MeasuredValue FLOAT NOT NULL,
+    MeasurementTime DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (EquipmentID) REFERENCES IoT_Equipment(EquipmentID) ON DELETE CASCADE
+);
