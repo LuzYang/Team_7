@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Data Display</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+      }
+      .container {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+      }
+      #data {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>API Data Display</h1>
+      <button onclick="fetchData()">Fetch Data from API</button>
+      <div id="data"></div>
+    </div>
+
+    <script>
+      async function fetchData() {
+        try {
+          const response = await fetch("http://172.26.196.230:3080"); //this is changed by network
+          const data = await response.json();
+          document.getElementById("data").innerText = JSON.stringify(
+            data,
+            null,
+            2
+          );
+        } catch (error) {
+          document.getElementById("data").innerText =
+            "Error fetching data: " + error.message;
+        }
+      }
+    </script>
+  </body>
+</html>
