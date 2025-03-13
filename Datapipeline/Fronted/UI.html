@@ -3,7 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>API Data Display</title>
+    <title>API Data with Google Charts</title>
+    <script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -19,34 +23,57 @@
         border-radius: 8px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         width: 80%;
-        max-width: 600px;
+        max-width: 800px;
       }
-      #data {
-        margin-top: 20px;
+      #chart_div {
+        width: 100%;
+        height: 400px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <h1>API Data Display</h1>
-      <button onclick="fetchData()">Fetch Data from API</button>
-      <div id="data"></div>
+      <h1>Device Data Visualization</h1>
+      <button onclick="fetchData()">Fetch Data and Draw Chart</button>
+      <div id="chart_div"></div>
     </div>
 
     <script>
+      google.charts.load("current", { packages: ["corechart"] });
+
       async function fetchData() {
         try {
-          const response = await fetch("http://172.26.196.230:3080"); //this is changed by network
-          const data = await response.json();
-          document.getElementById("data").innerText = JSON.stringify(
-            data,
-            null,
-            2
-          );
+          const response = await fetch("http://172.26.196.230:3080"); 
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          const apiData = await response.json();
+          drawChart(apiData);
         } catch (error) {
-          document.getElementById("data").innerText =
-            "Error fetching data: " + error.message;
+          console.error("Fetch error:", error);
         }
+      }
+
+      function drawChart(apiData) {
+        const chartData = new google.visualization.DataTable();
+        chartData.addColumn("string", "Device");
+        chartData.addColumn("number", "Value");
+
+        apiData.forEach((item) => {
+          chartData.addRow([item.device, item.value]);
+        });
+
+        const options = {
+          title: "Device Data Overview",
+          hAxis: { title: "Device" },
+          vAxis: { title: "Value" },
+          legend: "none",
+        };
+
+        const chart = new google.visualization.ColumnChart(
+          document.getElementById("chart_div")
+        );
+        chart.draw(chartData, options);
       }
     </script>
   </body>
