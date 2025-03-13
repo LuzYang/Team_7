@@ -40,7 +40,13 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.json([
+    { device: "Temperature Sensor", value: 22.5 },
+    { device: "Humidity Sensor", value: 60 },
+    { device: "Light Sensor", value: 0 },
+    { device: "Motion Sensor", value: 1 },
+    { device: "Gas Sensor", value: 0.03 },
+  ]);
 });
 
 app.get("/users", (req, res) => {
