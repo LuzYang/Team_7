@@ -1,0 +1,23 @@
+Q:Whose code is being evaluated? 
+A:Jamilya Yakubova
+Q:Who/what team evaluated the code?
+A:Team 7
+Q:Is the code well written and structured? Are there any unnecessary or redundant lines of code? Is the code easy to read and understand?
+A:The code is well-structured, using object-oriented programming (OOP) to represent different IoT devices.
+Variable names are appropriate and follow Python conventions.
+The to_dict() and from_dict() methods are well-encapsulated, making serialization and deserialization clear.
+Q:Does the code meet the requirements of the task? Are all features implemented correctly? Are there any bugs or errors in the code? Has the code been tested thoroughly? How is error
+handling implemented?
+A:The code mostly meets the requirements, implementing device addition, serialization, deserialization, encryption, and decryption.encryption and decryption don’t work well
+load_from_csv() does not check whether the CSV file is empty, which could cause DictReader to fail.
+Q:Are there any parts of the code that could be improved for better efficiency? Are there comments explaining the code?
+A:The code lacks exception handling for file operations (IOError) and decryption failures (InvalidToken).
+Few comments are present—while the code is not overly complex, adding brief comments would improve readability.
+Q:Does the student clearly understand the code they have written? Can the student explain the purpose and functionality of each part of their code? Does the student show ownership of their work, indicating they have not just copied
+code from external sources?
+A:The overall logic is clear, and the student should be able to explain each part of the code.
+Q:Has the student customized or adapted any AI- generated code to better fit the task requirements? Can the student explain why they chose to use certain AI generated code
+and how they integrated it into their project?
+A:She used AI—she wrote the basics herself, then used AI to help her optimize it, and she also learned from the parts AI added.
+score:85/100
+
